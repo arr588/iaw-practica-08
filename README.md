@@ -10,7 +10,17 @@ Para esta práctica he tomado como base el script que completamos en la práctic
 
     `mysql -u root < database.sql`
 
-    También hay que tener en cuenta que en este caso no hemos cambiado la contraseña de root en MySQL.
+    También hay que tener en cuenta que en este caso no hemos cambiado la contraseña de root en MySQL. El script para la base de datos es el siguiente:
+
+    ```
+    DROP DATABASE IF EXISTS db_wordpress;
+    CREATE DATABASE db_wordpress CHARSET utf8mb4;
+    USE db_wordpress;
+
+    CREATE USER IF NOT EXISTS 'db_user'@'%';
+    SET PASSWORD FOR 'db_user'@'%' = 'db_password';
+    GRANT ALL PRIVILEGES ON db_wordpress.* TO 'db_user'@'%';
+    ```
 
 - Para instalar Wordpress primero lo descargamos y lo descomprimimos:
 
@@ -44,4 +54,3 @@ Para esta práctica he tomado como base el script que completamos en la práctic
     define('LOGGED_IN_SALT',   'IZD|Ijk(1v>uTHh$Dn]#/rU1apBqEl*BF]?6H{W<>)Y7[5. -+uw<B$pT~d1Y>CU');
     define('NONCE_SALT',       'O9aFMNd97Xjgi-|+,WL:ad(<vV,|Z|#*.{t+)qx .HMExiH,[eE&RJmf-^mSEXxf');
     ```
-    
